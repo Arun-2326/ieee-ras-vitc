@@ -54,5 +54,10 @@ All foundational chapter data has been strictly validated against official recor
 To initialize the command center on a local machine:
 
 1. Clone the repository:
-   ```bash
    git clone https://github.com/Arun-2326/ieee-ras-vitc
+2. Navigate into the directory:
+cd ieee-ras-vitc
+3. Install dependencies:
+npm install
+4. Boot the Vite development server:
+npm run dev
