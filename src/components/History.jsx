@@ -1,17 +1,7 @@
-import React, { useState, useEffect } from 'react';
-
 export default function History() {
-  const [daysActive, setDaysActive] = useState(0);
-
-  useEffect(() => {
-    // Inauguration date: August 7, 2018
-    const foundingDate = new Date('2018-08-07');
-    const currentDate = new Date();
-    const timeDifference = currentDate.getTime() - foundingDate.getTime();
-    // Convert milliseconds to total calendar days
-    const totalDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    setDaysActive(totalDays);
-  }, []);
+  // Inauguration date: August 7, 2018
+  const foundingDate = new Date('2018-08-07');
+  const daysActive = Math.max(1, Math.floor((Date.now() - foundingDate.getTime()) / (1000 * 60 * 60 * 24)));
 
   return (
     <section id="history" className="py-16 font-mono">

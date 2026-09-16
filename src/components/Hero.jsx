@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Hero() {
   return (
     <section id="about" className="py-12 border-b-2 border-lab-muted/20 font-mono">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // Exact data structure provided as the source of truth in the assignment
 const modules = [

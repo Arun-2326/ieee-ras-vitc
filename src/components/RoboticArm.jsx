@@ -1,15 +1,17 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function RoboticArm({ activeSection, isPersistent = false }) {
   const poses = {
-    hero:        { base: 0,   shoulder: -25, elbow: 55,  wrist: 15 },
-    about:       { base: 15,  shoulder: -45, elbow: 90,  wrist: -30 },
-    departments: { base: -20, shoulder: 10,  elbow: -40, wrist: 45 },
-    projects:    { base: 45,  shoulder: -60, elbow: 110, wrist: -45 },
-    events:      { base: -10, shoulder: -15, elbow: 30,  wrist: 0 },
-    community:   { base: 30,  shoulder: -20, elbow: 45,  wrist: -10 },
-    contact:     { base: 0,   shoulder: -35, elbow: 75,  wrist: 20 }
+    hero:         { base: 0,   shoulder: -25, elbow: 55,  wrist: 15 },
+    about:        { base: 15,  shoulder: -45, elbow: 90,  wrist: -30 },
+    departments:  { base: -20, shoulder: 10,  elbow: -40, wrist: 45 },
+    leadership:   { base: -15, shoulder: -30, elbow: 65,  wrist: 10 },
+    projects:     { base: 45,  shoulder: -60, elbow: 110, wrist: -45 },
+    publications: { base: -35, shoulder: -40, elbow: 75,  wrist: 35 },
+    research:     { base: -35, shoulder: -40, elbow: 75,  wrist: 35 },
+    events:       { base: -10, shoulder: -15, elbow: 30,  wrist: 0 },
+    community:    { base: 30,  shoulder: -20, elbow: 45,  wrist: -10 },
+    contact:      { base: 0,   shoulder: -35, elbow: 75,  wrist: 20 }
   };
 
   const currentPose = poses[activeSection] || poses.hero;

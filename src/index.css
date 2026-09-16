@@ -35,3 +35,54 @@ body {
   background-image: linear-gradient(#1c1c24 1px, transparent 1px);
   background-size: 100% 16px;
 }
+
+/* High-Tech Cybernetic Ticker Animation */
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker 28s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle Sci-Fi Scanline Effect */
+.scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.3)
+  );
+  background-size: 100% 4px;
+}
+
+/* Blueprint Corner Crosshairs */
+.blueprint-bracket {
+  position: relative;
+}
+.blueprint-bracket::before {
+  content: '+';
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255, 179, 0, 0.4);
+}
+.blueprint-bracket::after {
+  content: '+';
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255, 179, 0, 0.4);
+}
