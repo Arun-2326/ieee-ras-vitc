@@ -18,7 +18,7 @@ export default function App() {
     const handleScroll = () => {
       const sections = ['about', 'departments', 'projects', 'contact'];
       let current = 'hero';
-      
+
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el && el.getBoundingClientRect().top <= 200) {
@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-cmd-bg text-cmd-text font-sans relative selection:bg-cmd-amber selection:text-black">
-      
+
       <div className="fixed top-0 left-0 right-0 h-2 bg-black/80 backdrop-blur-sm z-50 border-b border-cmd-surface-brd overflow-hidden">
         <div className="w-full h-full ruler-x opacity-25"></div>
       </div>
@@ -58,9 +58,9 @@ export default function App() {
       <header className="sticky top-2 bg-cmd-bg/95 border-b border-cmd-surface-brd z-40 font-mono px-4 lg:px-8 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <button 
-              onClick={handleBeaconClick} 
-              className="w-2.5 h-2.5 bg-cmd-amber focus:outline-none cursor-pointer animate-pulse" 
+            <button
+              onClick={handleBeaconClick}
+              className="w-2.5 h-2.5 bg-cmd-amber focus:outline-none cursor-pointer animate-pulse"
               title="SYS_NODE"
             ></button>
             <span className="text-xs font-bold tracking-widest text-cmd-amber uppercase">IEEE RAS VIT CHENNAI</span>
@@ -68,7 +68,7 @@ export default function App() {
           <nav className="hidden lg:flex space-x-6 text-[11px] uppercase tracking-widest text-cmd-muted">
             <a href="#about" className="hover:text-cmd-amber transition-colors">01 About</a>
             <a href="#departments" className="hover:text-cmd-amber transition-colors">02 Departments</a>
-            <a href="#projects" className="hover:text-cmd-amber transition-colors">03 Projects & Events</a>
+            <a href="#projects" className="hover:text-cmd-amber transition-colors">03 Projects &amp; Events</a>
             <a href="#contact" className="hover:text-cmd-amber transition-colors">04 Contact</a>
           </nav>
           <span className="text-[10px] text-cmd-muted hidden sm:inline">[ REC_TASK.SW_DEV ]</span>
@@ -76,7 +76,7 @@ export default function App() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-32">
-        
+
         <section id="hero" className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center pt-8">
           <div className="lg:col-span-2 space-y-6">
             <div className="font-mono text-xs text-cmd-amber tracking-widest uppercase">// AUTOMATION MANIFEST V1.0</div>
@@ -142,9 +142,9 @@ export default function App() {
 
         <section id="projects" className="border-t border-cmd-surface-brd pt-16 space-y-8">
           <div className="font-mono">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">03 Project Logs & Activity</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">03 Project Logs &amp; Activity</h2>
           </div>
-          
+
           <div className="space-y-4 font-mono">
             <div className="bg-cmd-surface border border-cmd-surface-brd p-5 grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
               <div className="text-xs text-cmd-amber font-bold">ID: RAS_PRJ_01</div>
@@ -168,8 +168,87 @@ export default function App() {
 
         <section id="contact" className="border-t border-cmd-surface-brd pt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 font-mono">
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">04 Registry & Contact</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">04 Registry &amp; Contact</h2>
           </div>
           <div className="lg:col-span-2 space-y-6 text-xs uppercase text-cmd-muted">
             <div className="bg-cmd-surface border border-cmd-surface-brd p-6 space-y-2">
-              <div><span className="text-cmd-amber font-bold">FOUNDED INAUGURATED:</span> 7 August 2018</div>
+              <div><span className="text-cmd-amber font-bold">FOUNDED INAUGURATED:</span> {"7 August 2018"}</div>
+              <div><span className="text-cmd-amber font-bold">FACULTY COORDINATOR:</span> {"Dr. Suchetha M"}</div>
+              <div><span className="text-cmd-amber font-bold">EMAIL:</span> {"ieeerasvitchennai@gmail.com"}</div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              
+              <a 
+                href="mailto:ieeerasvitchennai@gmail.com"
+                className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 normal-case hover:border-cmd-amber/40 transition-colors"
+              >
+                <span className="lowercase">ieeerasvitchennai@gmail.com</span>
+                <span className="text-cmd-amber">↗</span>
+              </a>
+              
+              <a 
+                href="https://instagram.com/ieeerasvitc"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 hover:border-cmd-amber/40 transition-colors"
+              >
+                <span>@ieeerasvitc</span>
+                <span className="text-cmd-amber">↗</span>
+              </a>
+              
+              <a 
+                href="https://edu.ieee.org/in-rasvitcc/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 hover:border-cmd-amber/40 transition-colors sm:col-span-2"
+              >
+                <span>Official IEEE Chapter Page</span>
+                <span className="text-cmd-amber">↗</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {triggerEgg && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-6"
+          onClick={() => setTriggerEgg(false)}
+        >
+          <div
+            className="w-full max-w-md bg-cmd-surface border border-cmd-amber/40 p-6 font-mono text-xs space-y-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-cmd-amber font-bold uppercase tracking-widest mb-2">// SECURITY DIAGNOSTIC TRIGGERED //</div>
+            <div className="text-cmd-text space-y-1">
+              <div>[LOG] CORE RUNTIME INITIALIZATION: OK</div>
+              <div>[NODE] IEEE RAS / VIT CHENNAI STUDENT CHAPTER</div>
+              <div>[DEPT] SOFTWARE / WEB DEVELOPMENT DEPARTMENT</div>
+              <div>[AUTH] SECURE DIAGNOSTIC DEPLOYMENT COMPLETED.</div>
+              <div>[STATUS] SYSTEMS RUNNING STABLE. READY FOR GRADE EVALUATION.</div>
+            </div>
+            <button
+              onClick={() => setTriggerEgg(false)}
+              className="w-full bg-cmd-amber text-black py-2 text-xs uppercase font-bold tracking-wider hover:bg-cmd-amber/90 transition-colors cursor-pointer mt-4"
+            >
+              [ DISMISS_DIAGNOSTICS ]
+            </button>
+          </div>
+        </div>
+      )}
+
+      <footer className="border-t border-cmd-surface-brd font-mono text-[10px] text-cmd-muted px-4 lg:px-8 py-6 flex flex-col sm:flex-row justify-between gap-3 max-w-7xl mx-auto">
+        <span>IEEE RAS VITCC // CORE REDIRECTIONS:</span>
+        <div className="flex gap-4">
+          <a href="https://edu.ieee.org/in-rasvitcc/" target="_blank" rel="noreferrer" className="hover:text-cmd-amber">
+            OFFICIAL_PAGE ↗
+          </a>
+          <a href="https://ieeerasvitc.vercel.app" target="_blank" rel="noreferrer" className="hover:text-cmd-amber">
+            CHAPTER_PORTFOLIO ↗
+          </a>
+        </div>
+      </footer>
+    </div>
+  );
+}
