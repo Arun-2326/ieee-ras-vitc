@@ -19,7 +19,7 @@ export default function RoboticArm({ activeSection, isPersistent = false }) {
       <svg viewBox="0 0 200 200" className="w-full h-full stroke-cmd-amber fill-none" strokeWidth="1.5" strokeLinecap="round">
         {/* Engineering Crosshair Target Grids */}
         {!isPersistent && (
-          g font-size="8" font-family="monospace" className="fill-cmd-muted stroke-none opacity-40">
+          <g font-size="8" font-family="monospace" className="fill-cmd-muted stroke-none opacity-40">
             <line x1="20" y1="160" x2="180" y2="160" stroke="#71717a" strokeWidth="0.5" strokeDasharray="2,4" />
             <line x1="100" y1="20" x2="100" y2="180" stroke="#71717a" strokeWidth="0.5" strokeDasharray="2,4" />
             <circle cx="100" cy="160" r="70" stroke="#71717a" strokeWidth="0.5" strokeDasharray="4,8" />
