@@ -8,20 +8,27 @@ const modulesData = [
   { id: '04', label: 'Software', items: ['AI/ML', 'Web Development', 'UI/UX'] }
 ];
 
+const projectsData = [
+  { id: 'RAS_PRJ_01', title: 'RASCade Core Frame', domain: 'Software / Embedded', status: 'VERIFIED_COMPLETED', desc: 'A chapter-orchestrated hackathon stack environment focusing on local web systems development and rapid automation prototyping.' },
+  { id: 'RAS_PRJ_02', title: 'RoverX Mechanical Assembly', domain: 'Projects / Hardware', status: 'ARCHIVED_ACTIVE', desc: 'Hardware workshop parameters focusing on mechanical chassis alignment, planetary gear reduction frameworks, and sensor layouts.' },
+  { id: 'RAS_PRJ_PLACEHOLDER', title: 'Future Verified Research Node', domain: 'PLACEHOLDER', status: 'AWAITING_VERIFIED_METRICS', desc: 'Entry locked. This node is a placeholder for a future verified chapter research project.' }
+];
+
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [activeDept, setActiveDept] = useState(modulesData[0]);
+  const [expandedProj, setExpandedProj] = useState(null);
   const [eggCount, setEggCount] = useState(0);
   const [triggerEgg, setTriggerEgg] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'departments', 'projects', 'contact'];
+      const sections = ['about', 'departments', 'projects', 'events', 'community', 'contact'];
       let current = 'hero';
-
+      
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
-        if (el && el.getBoundingClientRect().top <= 200) {
+        if (el && el.getBoundingClientRect().top <= 250) {
           current = sectionId;
         }
       }
@@ -44,12 +51,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-cmd-bg text-cmd-text font-sans relative selection:bg-cmd-amber selection:text-black">
-
+      
       <div className="fixed top-0 left-0 right-0 h-2 bg-black/80 backdrop-blur-sm z-50 border-b border-cmd-surface-brd overflow-hidden">
         <div className="w-full h-full ruler-x opacity-25"></div>
       </div>
 
-      <div className="fixed bottom-6 right-6 z-40 bg-black/90 border border-cmd-surface-brd p-3 hidden md:flex flex-col items-center shadow-2xl w-32 font-mono">
+      <div className="fixed bottom-6 right-6 z-40 bg-black/90 border border-cmd-surface-brd p-3 hidden md:flex flex-col items-center w-32 font-mono">
         <div className="text-[8px] text-cmd-muted uppercase tracking-wider mb-1">ARM_POSE_FEED</div>
         <RoboticArm activeSection={activeSection} isPersistent={true} />
         <div className="text-[9px] text-cmd-amber mt-1 uppercase tracking-tight font-bold">[ {activeSection.toUpperCase()} ]</div>
@@ -58,28 +65,29 @@ export default function App() {
       <header className="sticky top-2 bg-cmd-bg/95 border-b border-cmd-surface-brd z-40 font-mono px-4 lg:px-8 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <button
-              onClick={handleBeaconClick}
-              className="w-2.5 h-2.5 bg-cmd-amber focus:outline-none cursor-pointer animate-pulse"
-              title="SYS_NODE"
+            <button 
+              onClick={handleBeaconClick} 
+              className="w-2.5 h-2.5 bg-cmd-amber focus-visible:ring-2 focus-visible:ring-cmd-amber focus:outline-none animate-pulse cursor-pointer"
+              aria-label="System indicator"
             ></button>
-            <span className="text-xs font-bold tracking-widest text-cmd-amber uppercase">IEEE RAS VIT CHENNAI</span>
+            <span className="text-xs font-bold tracking-widest text-cmd-amber uppercase">IEEE RAS VITCC</span>
           </div>
           <nav className="hidden lg:flex space-x-6 text-[11px] uppercase tracking-widest text-cmd-muted">
-            <a href="#about" className="hover:text-cmd-amber transition-colors">01 About</a>
-            <a href="#departments" className="hover:text-cmd-amber transition-colors">02 Departments</a>
-            <a href="#projects" className="hover:text-cmd-amber transition-colors">03 Projects &amp; Events</a>
-            <a href="#contact" className="hover:text-cmd-amber transition-colors">04 Contact</a>
+            <a href="#about" className="hover:text-cmd-amber focus-visible:text-cmd-amber focus:outline-none transition-colors">01 About</a>
+            <a href="#departments" className="hover:text-cmd-amber focus-visible:text-cmd-amber focus:outline-none transition-colors">02 Depts</a>
+            <a href="#projects" className="hover:text-cmd-amber focus-visible:text-cmd-amber focus:outline-none transition-colors">03 Projects</a>
+            <a href="#events" className="hover:text-cmd-amber focus-visible:text-cmd-amber focus:outline-none transition-colors">04 Events</a>
+            <a href="#community" className="hover:text-cmd-amber focus-visible:text-cmd-amber focus:outline-none transition-colors">05 Comm</a>
+            <a href="#contact" className="hover:text-cmd-amber focus-visible:text-cmd-amber focus:outline-none transition-colors">06 Contact</a>
           </nav>
-          <span className="text-[10px] text-cmd-muted hidden sm:inline">[ REC_TASK.SW_DEV ]</span>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-32">
-
+        
         <section id="hero" className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center pt-8">
           <div className="lg:col-span-2 space-y-6">
-            <div className="font-mono text-xs text-cmd-amber tracking-widest uppercase">// AUTOMATION MANIFEST V1.0</div>
+            <div className="font-mono text-xs text-cmd-amber tracking-widest uppercase">// AUTOMATION CONTROL MATRIX</div>
             <h1 className="text-5xl sm:text-7xl font-black uppercase tracking-tight leading-none text-cmd-text">
               Aspire.<br />Create.<br /><span className="text-cmd-amber">Automate.</span>
             </h1>
@@ -115,7 +123,7 @@ export default function App() {
                 <button
                   key={dept.id}
                   onClick={() => setActiveDept(dept)}
-                  className={`text-left p-3 text-xs uppercase tracking-wider transition-all border cursor-pointer ${
+                  className={`text-left p-3 text-xs uppercase tracking-wider transition-all border cursor-pointer focus-visible:ring-2 focus-visible:ring-cmd-amber focus:outline-none ${
                     activeDept.id === dept.id
                       ? 'bg-cmd-amber text-black border-cmd-amber font-bold'
                       : 'bg-cmd-surface text-cmd-text border-cmd-surface-brd hover:border-cmd-amber/40'
@@ -126,8 +134,8 @@ export default function App() {
               ))}
             </div>
             <div className="lg:col-span-3 bg-black border border-cmd-surface-brd p-6 min-h-[160px] font-mono relative">
-              <div className="absolute top-2 right-4 text-[9px] text-cmd-muted">CONSOLE_DATA_STREAM</div>
-              <div className="text-xs text-cmd-amber uppercase tracking-wider mb-4">// MOUNTED SUBMODULES</div>
+              <div className="absolute top-2 right-4 text-[9px] text-cmd-muted">CONSOLE_STREAM</div>
+              <div className="text-xs text-cmd-amber uppercase tracking-wider mb-4">// MOUNTED RECRUITMENT DOMAINS</div>
               <ul className="space-y-2">
                 {activeDept.items.map((subItem, index) => (
                   <li key={index} className="text-sm text-cmd-text flex items-center space-x-2">
@@ -142,68 +150,80 @@ export default function App() {
 
         <section id="projects" className="border-t border-cmd-surface-brd pt-16 space-y-8">
           <div className="font-mono">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">03 Project Logs &amp; Activity</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">03 Expandable Project Lab</h2>
           </div>
+          <div className="space-y-3 font-mono">
+            {projectsData.map((project) => (
+              <div key={project.id} className="bg-cmd-surface border border-cmd-surface-brd p-4 transition-all">
+                <div 
+                  onClick={() => setExpandedProj(expandedProj === project.id ? null : project.id)}
+                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer text-xs space-y-2 sm:space-y-0"
+                >
+                  <div className="flex items-center space-x-4">
+                    <span className="text-cmd-amber font-bold">{project.id}</span>
+                    <span className="text-cmd-text uppercase">{project.title}</span>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <span className="text-cmd-muted hidden md:inline">DOMAIN: {project.domain}</span>
+                    <span className={`px-2 py-0.5 text-[10px] ${project.id.includes('PLACEHOLDER') ? 'border border-dashed border-cmd-muted text-cmd-muted' : 'bg-cmd-amber/10 border border-cmd-amber/30 text-cmd-amber'}`}>
+                      {project.status}
+                    </span>
+                  </div>
+                </div>
+                {expandedProj === project.id && (
+                  <div className="mt-4 pt-4 border-t border-cmd-surface-brd text-sm text-cmd-muted">
+                    {project.desc}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
 
-          <div className="space-y-4 font-mono">
-            <div className="bg-cmd-surface border border-cmd-surface-brd p-5 grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
-              <div className="text-xs text-cmd-amber font-bold">ID: RAS_PRJ_01</div>
-              <div className="text-sm uppercase text-cmd-text font-bold lg:col-span-2">RASCade Hackathon</div>
-              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ 36-HOUR RUNTIME ]</div>
+        <section id="events" className="border-t border-cmd-surface-brd pt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="font-mono">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">04 Activity Log</h2>
+          </div>
+          <div className="lg:col-span-2 border-l border-cmd-surface-brd pl-6 space-y-8 font-mono">
+            <div className="relative">
+              <div className="absolute -left-[29px] top-1 w-2 h-2 bg-cmd-amber rounded-full"></div>
+              <h3 className="text-sm text-cmd-text font-bold">TechnoVIT Festival 2025</h3>
+              <p className="text-xs text-cmd-muted mt-1">Flagship technical festival featuring robotics workshops and competitions.</p>
             </div>
+            <div className="relative">
+              <div className="absolute -left-[29px] top-1 w-2 h-2 bg-cmd-amber rounded-full"></div>
+              <h3 className="text-sm text-cmd-text font-bold">RASCade 36-Hour Hackathon</h3>
+              <p className="text-xs text-cmd-muted mt-1">A chapter-orchestrated hackathon environment.</p>
+            </div>
+          </div>
+        </section>
 
-            <div className="bg-cmd-surface border border-cmd-surface-brd p-5 grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
-              <div className="text-xs text-cmd-amber font-bold">ID: RAS_PRJ_02</div>
-              <div className="text-sm uppercase text-cmd-text font-bold lg:col-span-2">RoverX 2025 Workshop</div>
-              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ TechnoVIT Festival ]</div>
-            </div>
-
-            <div className="bg-cmd-surface/30 border border-dashed border-cmd-surface-brd p-5 grid grid-cols-1 lg:grid-cols-4 gap-4 items-center opacity-60">
-              <div className="text-xs text-cmd-muted">ID: RAS_PRJ_PLACEHOLDER</div>
-              <div className="text-sm uppercase text-cmd-muted lg:col-span-2">Future Verified Project Node</div>
-              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ AWAITING METRICS ]</div>
-            </div>
+        <section id="community" className="border-t border-cmd-surface-brd pt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="font-mono">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">05 Community</h2>
+          </div>
+          <div className="lg:col-span-2 font-mono text-sm text-cmd-muted">
+             <p>Join our thriving community of robotics enthusiasts, developers, and engineers. We collaborate on open-source projects, host peer-to-peer learning sessions, and bridge the gap between academic theory and industry practice.</p>
           </div>
         </section>
 
         <section id="contact" className="border-t border-cmd-surface-brd pt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 font-mono">
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">04 Registry &amp; Contact</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">06 Registry &amp; Contact</h2>
           </div>
           <div className="lg:col-span-2 space-y-6 text-xs uppercase text-cmd-muted">
             <div className="bg-cmd-surface border border-cmd-surface-brd p-6 space-y-2">
-              <div><span className="text-cmd-amber font-bold">FOUNDED INAUGURATED:</span> {"7 August 2018"}</div>
-              <div><span className="text-cmd-amber font-bold">FACULTY COORDINATOR:</span> {"Dr. Suchetha M"}</div>
-              <div><span className="text-cmd-amber font-bold">EMAIL:</span> {"ieeerasvitchennai@gmail.com"}</div>
+              <div><span className="text-cmd-amber font-bold">FOUNDED:</span> 7 August 2018</div>
+              <div><span className="text-cmd-amber font-bold">FACULTY COORDINATOR:</span> Dr. Suchetha M</div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              
-              <a 
-                href="mailto:ieeerasvitchennai@gmail.com"
-                className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 normal-case hover:border-cmd-amber/40 transition-colors"
-              >
+              <a href="mailto:ieeerasvitchennai@gmail.com" className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 normal-case hover:border-cmd-amber/40 transition-colors">
                 <span className="lowercase">ieeerasvitchennai@gmail.com</span>
                 <span className="text-cmd-amber">↗</span>
               </a>
-              
-              <a 
-                href="https://instagram.com/ieeerasvitc"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 hover:border-cmd-amber/40 transition-colors"
-              >
+              <a href="https://instagram.com/ieeerasvitc" target="_blank" rel="noreferrer" className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 hover:border-cmd-amber/40 transition-colors">
                 <span>@ieeerasvitc</span>
-                <span className="text-cmd-amber">↗</span>
-              </a>
-              
-              <a 
-                href="https://edu.ieee.org/in-rasvitcc/"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between bg-cmd-surface border border-cmd-surface-brd p-4 hover:border-cmd-amber/40 transition-colors sm:col-span-2"
-              >
-                <span>Official IEEE Chapter Page</span>
                 <span className="text-cmd-amber">↗</span>
               </a>
             </div>
@@ -212,26 +232,15 @@ export default function App() {
       </main>
 
       {triggerEgg && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-6"
-          onClick={() => setTriggerEgg(false)}
-        >
-          <div
-            className="w-full max-w-md bg-cmd-surface border border-cmd-amber/40 p-6 font-mono text-xs space-y-2"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-6" onClick={() => setTriggerEgg(false)}>
+          <div className="w-full max-w-md bg-cmd-surface border border-cmd-amber/40 p-6 font-mono text-xs space-y-2" onClick={(e) => e.stopPropagation()}>
             <div className="text-cmd-amber font-bold uppercase tracking-widest mb-2">// SECURITY DIAGNOSTIC TRIGGERED //</div>
             <div className="text-cmd-text space-y-1">
               <div>[LOG] CORE RUNTIME INITIALIZATION: OK</div>
               <div>[NODE] IEEE RAS / VIT CHENNAI STUDENT CHAPTER</div>
-              <div>[DEPT] SOFTWARE / WEB DEVELOPMENT DEPARTMENT</div>
-              <div>[AUTH] SECURE DIAGNOSTIC DEPLOYMENT COMPLETED.</div>
-              <div>[STATUS] SYSTEMS RUNNING STABLE. READY FOR GRADE EVALUATION.</div>
+              <div>[STATUS] SYSTEMS RUNNING STABLE.</div>
             </div>
-            <button
-              onClick={() => setTriggerEgg(false)}
-              className="w-full bg-cmd-amber text-black py-2 text-xs uppercase font-bold tracking-wider hover:bg-cmd-amber/90 transition-colors cursor-pointer mt-4"
-            >
+            <button onClick={() => setTriggerEgg(false)} className="w-full bg-cmd-amber text-black py-2 text-xs uppercase font-bold tracking-wider hover:bg-cmd-amber/90 transition-colors cursor-pointer mt-4">
               [ DISMISS_DIAGNOSTICS ]
             </button>
           </div>
@@ -241,12 +250,7 @@ export default function App() {
       <footer className="border-t border-cmd-surface-brd font-mono text-[10px] text-cmd-muted px-4 lg:px-8 py-6 flex flex-col sm:flex-row justify-between gap-3 max-w-7xl mx-auto">
         <span>IEEE RAS VITCC // CORE REDIRECTIONS:</span>
         <div className="flex gap-4">
-          <a href="https://edu.ieee.org/in-rasvitcc/" target="_blank" rel="noreferrer" className="hover:text-cmd-amber">
-            OFFICIAL_PAGE ↗
-          </a>
-          <a href="https://ieeerasvitc.vercel.app" target="_blank" rel="noreferrer" className="hover:text-cmd-amber">
-            CHAPTER_PORTFOLIO ↗
-          </a>
+          <a href="https://edu.ieee.org/in-rasvitcc/" target="_blank" rel="noreferrer" className="hover:text-cmd-amber">OFFICIAL_PAGE ↗</a>
         </div>
       </footer>
     </div>
