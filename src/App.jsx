@@ -63,7 +63,7 @@ export default function App() {
               className="w-2.5 h-2.5 bg-cmd-amber focus:outline-none cursor-pointer animate-pulse" 
               title="SYS_NODE"
             ></button>
-            <span className="text-xs font-bold tracking-widest text-cmd-amber uppercase">IEEE RAS // VIT CHENNAI</span>
+            <span className="text-xs font-bold tracking-widest text-cmd-amber uppercase">IEEE RAS VIT CHENNAI</span>
           </div>
           <nav className="hidden lg:flex space-x-6 text-[11px] uppercase tracking-widest text-cmd-muted">
             <a href="#about" className="hover:text-cmd-amber transition-colors">01 About</a>
@@ -79,7 +79,7 @@ export default function App() {
         
         <section id="hero" className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center pt-8">
           <div className="lg:col-span-2 space-y-6">
-            <div className="font-mono text-xs text-cmd-amber tracking-widest uppercase">// AUTOMATION_MANIFEST_V1.0</div>
+            <div className="font-mono text-xs text-cmd-amber tracking-widest uppercase">// AUTOMATION MANIFEST V1.0</div>
             <h1 className="text-5xl sm:text-7xl font-black uppercase tracking-tight leading-none text-cmd-text">
               Aspire.<br />Create.<br /><span className="text-cmd-amber">Automate.</span>
             </h1>
@@ -92,15 +92,14 @@ export default function App() {
 
         <section id="about" className="border-t border-cmd-surface-brd pt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="font-mono">
-            <span className="text-cmd-amber font-bold text-sm">{"01 //"}</span>
-            <h2 className="text-xs uppercase text-cmd-muted tracking-widest inline-block ml-2">Core Mission Definition</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">01 About Chapter</h2>
           </div>
           <div className="lg:col-span-2 space-y-6">
             <p className="text-lg text-cmd-text font-normal leading-relaxed">
               "To provide an environment for students to grow and nurture their talents under the guidance of IEEE and industry experts, keeping members current with emerging technology and helping their research/projects reach a wider audience."
             </p>
             <div className="text-xs text-cmd-muted uppercase font-mono tracking-wide bg-cmd-surface p-4 border border-cmd-surface-brd">
-              <span className="text-cmd-amber font-bold block mb-1">PARENT SOCIETY PURPOSE //</span>
+              <span className="text-cmd-amber font-bold block mb-1">PARENT SOCIETY PURPOSE</span>
               Advancing the theory and practice of robotics and automation engineering and science, and maintaining high professional standards among members.
             </div>
           </div>
@@ -108,8 +107,7 @@ export default function App() {
 
         <section id="departments" className="border-t border-cmd-surface-brd pt-16 space-y-8">
           <div className="font-mono">
-            <span className="text-cmd-amber font-bold text-sm">{"02 //"}</span>
-            <h2 className="text-xs uppercase text-cmd-muted tracking-widest inline-block ml-2">Department Structure Breakdown</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">02 Departments Matrix</h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
             <div className="flex flex-col space-y-2 font-mono">
@@ -129,7 +127,7 @@ export default function App() {
             </div>
             <div className="lg:col-span-3 bg-black border border-cmd-surface-brd p-6 min-h-[160px] font-mono relative">
               <div className="absolute top-2 right-4 text-[9px] text-cmd-muted">CONSOLE_DATA_STREAM</div>
-              <div className="text-xs text-cmd-amber uppercase tracking-wider mb-4">// MOUNTED_DOMAIN_SUBMODULES:</div>
+              <div className="text-xs text-cmd-amber uppercase tracking-wider mb-4">// MOUNTED SUBMODULES</div>
               <ul className="space-y-2">
                 {activeDept.items.map((subItem, index) => (
                   <li key={index} className="text-sm text-cmd-text flex items-center space-x-2">
@@ -144,31 +142,34 @@ export default function App() {
 
         <section id="projects" className="border-t border-cmd-surface-brd pt-16 space-y-8">
           <div className="font-mono">
-            <span className="text-cmd-amber font-bold text-sm">{"03 //"}</span>
-            <h2 className="text-xs uppercase text-cmd-muted tracking-widest inline-block ml-2">Project Lab Registry & Activity Logs</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">03 Project Logs & Activity</h2>
           </div>
           
           <div className="space-y-4 font-mono">
             <div className="bg-cmd-surface border border-cmd-surface-brd p-5 grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
               <div className="text-xs text-cmd-amber font-bold">ID: RAS_PRJ_01</div>
-              <div className="text-sm uppercase text-cmd-text font-bold lg:col-span-2">RASCade Chapter Hackathon</div>
-              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ 36-HOUR RUNTIME TIMEBOX ]</div>
+              <div className="text-sm uppercase text-cmd-text font-bold lg:col-span-2">RASCade Hackathon</div>
+              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ 36-HOUR RUNTIME ]</div>
             </div>
 
             <div className="bg-cmd-surface border border-cmd-surface-brd p-5 grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
               <div className="text-xs text-cmd-amber font-bold">ID: RAS_PRJ_02</div>
-              <div className="text-sm uppercase text-cmd-text font-bold lg:col-span-2">RoverX 2025 — Hardware Workshop</div>
-              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ TechnoVIT // OCT 31 – NOV 2 2025 ]</div>
+              <div className="text-sm uppercase text-cmd-text font-bold lg:col-span-2">RoverX 2025 Workshop</div>
+              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ TechnoVIT Festival ]</div>
             </div>
 
             <div className="bg-cmd-surface/30 border border-dashed border-cmd-surface-brd p-5 grid grid-cols-1 lg:grid-cols-4 gap-4 items-center opacity-60">
               <div className="text-xs text-cmd-muted">ID: RAS_PRJ_PLACEHOLDER</div>
-              <div className="text-sm uppercase text-cmd-muted lg:col-span-2">Future Verified Research Project Node</div>
-              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ STATUS: AWAITING_VERIFIED_METRICS ]</div>
+              <div className="text-sm uppercase text-cmd-muted lg:col-span-2">Future Verified Project Node</div>
+              <div className="text-xs text-cmd-muted uppercase text-left lg:text-right">[ AWAITING METRICS ]</div>
             </div>
           </div>
         </section>
 
         <section id="contact" className="border-t border-cmd-surface-brd pt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 font-mono">
           <div>
-            <span className="text-cmd-amber font-bold text-sm">{"04 //"}</span>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-cmd-amber">04 Registry & Contact</h2>
+          </div>
+          <div className="lg:col-span-2 space-y-6 text-xs uppercase text-cmd-muted">
+            <div className="bg-cmd-surface border border-cmd-surface-brd p-6 space-y-2">
+              <div><span className="text-cmd-amber font-bold">FOUNDED INAUGURATED:</span> 7 August 2018</div>
